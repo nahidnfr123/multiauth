@@ -9,6 +9,7 @@ use App\Providers\RouteServiceProvider;
 use App\Rules\PhoneMaxLength;
 use App\Rules\PhoneMinLength;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -36,7 +37,18 @@ class RegisterController extends Controller
      * @var string
      */
     //protected $redirectTo = RouteServiceProvider::HOME;
-    protected $redirectTo = RouteServiceProvider::LOGIN;
+    //protected $redirectTo = RouteServiceProvider::LOGIN;
+
+
+    // Prevent user from default login after register is complete ...
+    protected function registered(Request $request, $user)
+    {
+        if (Auth::check()){
+            Auth::logout();
+            session()->flash('Success', 'Registration is successful. Please login to your account.');
+            return redirect()->route('login');
+        }
+    }
 
     /**
      * Create a new controller instance.
@@ -86,7 +98,6 @@ class RegisterController extends Controller
             report($e);
             return false;
         }
-        session()->flash('Success', 'Registration is successfull. Please login to your account.');
         return $User;
 
         // The following code doesnot work here in laravel 7 \\
