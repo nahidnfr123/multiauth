@@ -3,7 +3,7 @@
         <ul class="nav metismenu" id="side-menu">
             <li class="nav-header">
                 <div class="dropdown profile-element">
-                    <img alt="image" class="rounded-circle" src="{{ asset('storage/img/profile_small.jpg') }}"/>
+                    <img alt="image" class="rounded-circle" height="50" src="{{ asset('storage/user_images/') }}{{ Auth::user()->avatar }}"/>
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                         <span class="block m-t-xs font-bold">David Williams</span>
                         <span class="text-muted text-xs block">Art Director <b class="caret"></b></span>

@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('verification_token', 100);
             $table->string('password', 200);
             $table->string('gender', 1)->nullable();
-            $table->string('profile_image', 100)->nullable();
+            $table->string('avatar', 100)->default('/avatar.png');
             $table->date('dob')->nullable();
             $table->tinyInteger('admin')->default(0);
             $table->rememberToken();

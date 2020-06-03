@@ -58,16 +58,5 @@
 @endsection
 
 @section('Script')
-    <script>
-        $(function () {
-            $('input[type=checkbox]').click(function () {
-                var chks = document.getElementById('roles').getElementsByTagName('input');
-                for (i = 0; i < chks.length; i++) {
-                    chks[i].checked = false;
-                }
-                if (chks.length > 1)
-                    $(this)[0].checked = true;
-            });
-        });
-    </script>
+
 @endsection
