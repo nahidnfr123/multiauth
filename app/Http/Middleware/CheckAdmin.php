@@ -20,8 +20,11 @@ class CheckAdmin
             if (Auth::user()->hasRole('admin') || Auth::user()->hasRole('super_admin')) {
                 return $next($request);
             }
-            return redirect()->back()->withErrors('error', 'Invalid credentials.' );
+
+            // If a non admin user is logged in and trying to access admin page show 404
+            abort(404, 'Page Not Found.');
         }
-        return redirect(route('admin.login'))->with('Info', 'Please login as a admin to access the admin panel.');
+        // User is not logged in show admin page ...
+        return redirect(route('admin.login'));
     }
 }

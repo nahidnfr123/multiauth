@@ -29,11 +29,16 @@
                 <h2 style="font-size: 32px" class="text-dark">FlyShop Admin</h2>
                 <div>Login to admin panel.</div>
             </div>
+            @if (session()->has('Error'))
+                <div class="alert alert-danger text-center">
+                    {{ session('Error') }}
+                </div>
+            @endif
             <form class="m-t" role="form" method="POST" action="{{ route('admin.login') }}" id="admin-login-form">
                 @csrf
                 <input type="hidden" name="FormType" hidden value="AdminForm" style="display: none;" readonly required>
                 <div class="form-group fadeIn second">
-                    <label for="email" class="text-dark">Username: </label>
+                    <label for="email" class="text-dark">Email: </label>
                     <input type="email" class="form-control @error('email') is-invalid @enderror" placeholder="Email" required="" id="email" name="email">
                     @error('email')
                     <span class="invalid-feedback" role="alert">

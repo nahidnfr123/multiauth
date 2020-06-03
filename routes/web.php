@@ -20,15 +20,16 @@ Route::get('/', 'HomeController@index')->name('index');
 
 Auth::routes();
 
-
+// Show Customer Profile ....
 Route::get('/profile', 'Customer\ProfileController@index')->middleware('auth');
 
 
 /// Admin routes ...
-Route::prefix('admin')->name('admin.')->group(function(){
+Route::prefix('adm')->name('admin.')->group(function(){
 
+    // Admin login routes ...
     Route::namespace('Admin\Auth')->group(function () {
-        Route::get('login', 'LoginController@LoginForm')->name('login');
+        Route::get('login', 'LoginController@showLoginForm')->name('login');
         Route::post('login', 'LoginController@login')->name('login');
     });
 

@@ -25,21 +25,21 @@
 </head>
 
 <body class="fixed-sidebar">
-<div id="wrapper">
-    @include('admin.layouts.partials.left-side-nav')
+    <div id="wrapper">
+        @include('admin.layouts.partials.left-side-nav')
 
-    <div id="page-wrapper" class="gray-bg">
-        @include('admin.layouts.partials.top-bar')
+        <div id="page-wrapper" class="gray-bg">
+            @include('admin.layouts.partials.top-bar')
 
-        @include('admin.layouts.partials.alerts')
+            @include('admin.layouts.partials.alerts')
 
-        @yield('body_content')
+            @yield('body_content')
 
-        @include('admin.layouts.partials.footer')
+            @include('admin.layouts.partials.footer')
+        </div>
+        @include('admin.layouts.partials.right-sidebar')
     </div>
-    @include('admin.layouts.partials.right-sidebar')
-</div>
     @include('admin.layouts.partials.script')
-    @yield('Page_Level_Script')
+    @yield('Script')
 </body>
 </html>

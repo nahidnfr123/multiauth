@@ -31,11 +31,11 @@ class AuthServiceProvider extends ServiceProvider
         });
 
         Gate::define('edit-users', static function ($user){
-            return $user->hasRole(['super_admin', 'admin',]);
+            return $user->hasAnyRoles(['super_admin', 'admin',]);
         });
 
         Gate::define('delete-users', static function ($user){
-            return $user->hasRole(['super_admin', 'admin',]);
+            return $user->hasAnyRoles(['super_admin', 'admin',]);
         });
 
         /// Example code for ... setting user ...

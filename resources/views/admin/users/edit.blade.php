@@ -40,7 +40,7 @@
                                     <label for="roles" class="col-md-2 col-form-label text-md-right">Roles</label>
                                     <div class="col-md-6">
                                     @foreach($roles as $role)
-                                        <div class="form-check ">
+                                        <div class="form-check " id="roles">
                                             <input type="checkbox" name="roles[]" value="{{$role->id}}" id="{{ $role->name.'inp' }}"
                                             @if($user->roles->pluck('id')->contains($role->id)) checked @endif>
                                             <label for="{{ $role->name.'inp' }}">{{ $role->name }}</label>
@@ -55,4 +55,19 @@
                 </div>
             </div>
         </div>
+@endsection
+
+@section('Script')
+    <script>
+        $(function () {
+            $('input[type=checkbox]').click(function () {
+                var chks = document.getElementById('roles').getElementsByTagName('input');
+                for (i = 0; i < chks.length; i++) {
+                    chks[i].checked = false;
+                }
+                if (chks.length > 1)
+                    $(this)[0].checked = true;
+            });
+        });
+    </script>
 @endsection
